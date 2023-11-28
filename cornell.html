@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cornell Tekniği Not Çıkarma</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -22,44 +24,69 @@
         <textarea id="sorular" rows="10" cols="50"></textarea>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button id="not-kaydet">Notları Kaydet</button>
+        <button id="not-temizle">Notları Temizle</button>
+      </div>
+    </div>
   </div>
 
-  <script>
-    // Anahat metin alanını güncellemek için bir fonksiyon tanımlayın.
-    function updateAnahat(text) {
-      // Metin alanını güncelleyin.
-      document.getElementById("anahat").value = text;
-    }
-
-    // Özet metin alanını güncellemek için bir fonksiyon tanımlayın.
-    function updateOzet(text) {
-      // Metin alanını güncelleyin.
-      document.getElementById("ozet").value = text;
-    }
-
-    // Sorular metin alanını güncellemek için bir fonksiyon tanımlayın.
-    function updateSorular(text) {
-      // Metin alanını güncelleyin.
-      document.getElementById("sorular").value = text;
-    }
-
-    // Anahat metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
-    document.getElementById("anahat").addEventListener("input", function() {
-      // Metin alanını güncelleyin.
-      updateAnahat(this.value);
-    });
-
-    // Özet metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
-    document.getElementById("ozet").addEventListener("input", function() {
-      // Metin alanını güncelleyin.
-      updateOzet(this.value);
-    });
-
-    // Sorular metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
-    document.getElementById("sorular").addEventListener("input", function() {
-      // Metin alanını güncelleyin.
-      updateSorular(this.value);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.col-md-6 {
+  width: 50%;
+}
+
+.col-md-12 {
+  width: 100%;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+function kaydet() {
+  // Notları kaydetmek için bir kod oluşturun.
+}
+
+function temizle() {
+  // Notları temizlemek için bir kod oluşturun.
+}
+
+// Butonlara tıklama olayları ekleyin.
+document.getElementById("not-kaydet").addEventListener("click", kaydet);
+document.getElementById("not-temizle").addEventListener("click", temizle);
