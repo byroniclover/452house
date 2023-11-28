@@ -2,62 +2,64 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Cornell Not Alma Tekniği</title>
+  <title>Cornell Tekniği Not Çıkarma</title>
 </head>
 <body>
-  <h1>Cornell Not Alma Tekniği</h1>
-  <p>Cornell not alma tekniği, bilgilerinizi daha iyi öğrenmenize ve hatırlamanıza yardımcı olabilecek etkili bir not alma yöntemidir. Bu teknik, notlarınızı üç ana bölüme ayırır:</p>
-  <ul>
-    <li>Ana Düşünceler: Dersin ana fikirlerini veya kavramlarını içeren bölümdür.</li>
-    <li>Özet: Dersin ana noktalarını özetleyen bölümdür.</li>
-    <li>Sorular: Dersin ana noktalarını anlamanıza yardımcı olacak sorular içeren bölümdür.</li>
-  </ul>
-  <p>Bu website, Cornell not alma tekniğini kullanarak ders notu çıkarmanıza yardımcı olacak bir araçtır. Notlarınızı yükledikten sonra, sistem bunları otomatik olarak üç ana bölüme ayırır.</p>
-  <form action="index.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="notlar">
-    <input type="submit" value="Notları Yükle">
-  </form>
-  <div class="notlar">
-    <h2>Ana Düşünceler</h2>
-    <ul class="ana-dusunceler"></ul>
-    <h2>Özet</h2>
-    <p class="ozet"></p>
-    <h2>Sorular</h2>
-    <ul class="sorular"></ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Anahat</h2>
+        <textarea id="anahat" rows="10" cols="50"></textarea>
+      </div>
+      <div class="col-md-6">
+        <h2>Özet</h2>
+        <textarea id="ozet" rows="10" cols="50"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Sorular</h2>
+        <textarea id="sorular" rows="10" cols="50"></textarea>
+      </div>
+    </div>
   </div>
+
   <script>
-  // Notları yükle
-  function yukle() {
-    if (document.querySelector("input[name='notlar']").files.length === 0) {
-      alert("Lütfen notlarınızı yükleyin.");
-      return;
+    // Anahat metin alanını güncellemek için bir fonksiyon tanımlayın.
+    function updateAnahat(text) {
+      // Metin alanını güncelleyin.
+      document.getElementById("anahat").value = text;
     }
 
-    var notlar = document.querySelector("input[name='notlar']").files[0];
-    var reader = new FileReader();
-    reader.onload = function() {
-      var text = reader.result;
-      var anaDusunceler = text.split("\n");
-      var ozet = "";
-      var sorular = "";
-      for (var i = 0; i < anaDusunceler.length; i++) {
-        if (anaDusunceler[i].charAt(0).toUpperCase() === anaDusunceler[i].charAt(0)) {
-          anaDusunceler[i] = anaDusunceler[i].toUpperCase();
-          ozet += anaDusunceler[i] + "\n";
-        } else {
-          sorular += anaDusunceler[i] + "\n";
-        }
-      }
+    // Özet metin alanını güncellemek için bir fonksiyon tanımlayın.
+    function updateOzet(text) {
+      // Metin alanını güncelleyin.
+      document.getElementById("ozet").value = text;
+    }
 
-      // Notları ekrana bas
-      document.querySelector(".ana-dusunceler").innerHTML = anaDusunceler.join("");
-      document.querySelector(".ozet").innerHTML = ozet;
-      document.querySelector(".sorular").innerHTML = sorular.join("");
-    };
-    reader.readAsText(notlar);
-  }
+    // Sorular metin alanını güncellemek için bir fonksiyon tanımlayın.
+    function updateSorular(text) {
+      // Metin alanını güncelleyin.
+      document.getElementById("sorular").value = text;
+    }
 
-  document.querySelector("input[type='submit']").onclick = yukle;
+    // Anahat metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
+    document.getElementById("anahat").addEventListener("input", function() {
+      // Metin alanını güncelleyin.
+      updateAnahat(this.value);
+    });
+
+    // Özet metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
+    document.getElementById("ozet").addEventListener("input", function() {
+      // Metin alanını güncelleyin.
+      updateOzet(this.value);
+    });
+
+    // Sorular metin alanındaki değişiklikleri dinlemek için bir olay dinleyicisi oluşturun.
+    document.getElementById("sorular").addEventListener("input", function() {
+      // Metin alanını güncelleyin.
+      updateSorular(this.value);
+    });
   </script>
 </body>
 </html>
